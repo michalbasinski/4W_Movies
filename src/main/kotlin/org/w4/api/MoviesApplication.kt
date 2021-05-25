@@ -1,4 +1,4 @@
-package org.w.movies
+package org.w4.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
