@@ -3,7 +3,7 @@ package org.w4.api.movies.domain
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
-import junit.framework.Assert.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.util.*
 

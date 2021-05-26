@@ -3,15 +3,16 @@ package org.w4.api.movies.domain
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.w4.api.movies.dto.MovieDetailsDto
+import java.math.BigDecimal
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ProviderResponse {
     @JsonProperty("Title")
-    var title: String? = null
+    lateinit var title: String
     @JsonProperty("imdbRating")
-    var imdbRating: Float? = null
+    lateinit var imdbRating: BigDecimal
     @JsonProperty("Runtime")
-    var runtime: String? = null
+    lateinit var runtime: String
 
-    fun toDto() = MovieDetailsDto(title, imdbRating, runtime)
+    fun toDto() = MovieDetailsDto(title, imdbRating.toFloat(), runtime)
 }
