@@ -11,7 +11,9 @@ internal data class Movie(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     val name: String,
-    val extId: String
+    val extId: String,
+    @ElementCollection
+    val ratings:MutableList<Float>
 ) {
     fun toDto() = MovieDto(id, name)
 }

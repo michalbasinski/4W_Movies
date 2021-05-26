@@ -29,7 +29,7 @@ internal class MovieDetailsFetcherTest {
         val testRuntime = "120 min"
         val expectedResult = MovieDetailsDto(testTitle, testRating, testRuntime)
         val url = "http://provider.url?apiKey=&i=12345"
-        every { repository.findById(testMovieId) } returns Optional.of(Movie(testMovieId, testTitle, testExtId))
+        every { repository.findById(testMovieId) } returns Optional.of(Movie(testMovieId, testTitle, testExtId, mutableListOf()))
         every { restTemplate.getForEntity(url, ProviderResponse::class.java) } returns
                 ResponseEntity(
                     ProviderResponse().apply {
