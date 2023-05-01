@@ -10,9 +10,16 @@ class MovieFacade internal constructor(
     internal fun getAllMovies() = moviesRepository.findAll()
     internal fun getMovie(id: Long) = movieDetailsFetcher.getMovieDetails(id)
 
-    internal fun rateMovie(id: Long, rating: Float) = moviesRepository.findById(id).map { movie ->
-        movie.ratings.add(rating)
-        movie
-    }.let { updatedMovie -> moviesRepository.save(updatedMovie.get()) }
+    internal fun rateMovie(id: Long, rating: Float) = moviesRepository.findById(id)
+        .map {
+            Movie(it.id,
+                it.name,
+                it.extId,
+                it.ratings.toMutableList().let { ratings ->
+                    ratings.add(rating)
+                    ratings.toList()
+                })
+        }
+        .also { moviesRepository.save(it.get()) }
 
 }

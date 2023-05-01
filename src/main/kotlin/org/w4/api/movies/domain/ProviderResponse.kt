@@ -6,13 +6,13 @@ import org.w4.api.movies.dto.MovieDetailsDto
 import java.math.BigDecimal
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class ProviderResponse {
+data class ProviderResponse(
     @JsonProperty("Title")
-    lateinit var title: String
+    val title: String,
     @JsonProperty("imdbRating")
-    lateinit var imdbRating: BigDecimal
+    val imdbRating: BigDecimal,
     @JsonProperty("Runtime")
-    lateinit var runtime: String
-
+    val runtime: String
+) {
     fun toDto() = MovieDetailsDto(title, imdbRating.toFloat(), runtime)
 }

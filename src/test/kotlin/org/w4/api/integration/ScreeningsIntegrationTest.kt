@@ -36,7 +36,7 @@ class ScreeningsIntegrationTest {
         val initialSize = screeningsRepository.count()
 
         //when
-        testRestTemplate.postForEntity(
+        val result = testRestTemplate.postForEntity(
             "http://localhost:$port/internal/screenings",
             NewScreeningDto(1L, date, price),
             ScreeningDto::class.java
@@ -50,12 +50,12 @@ class ScreeningsIntegrationTest {
     @Test
     fun `should find exactly one screening`() {
         //given
-        val expectedScreening = ScreeningDto().apply {
-            title = "Fast & Furious"
-            movieId = 4
-            price = "10 PLN"
+        val expectedScreening = ScreeningDto(
+            title = "Fast & Furious",
+            movieId = 4,
+            price = "10 PLN",
             date = LocalDateTime.of(LocalDate.of(2020, 5, 5), LocalTime.of(15, 0))
-        }
+        )
 
         //when
         val result = testRestTemplate.getForEntity(

@@ -27,6 +27,7 @@ dependencies {
 	testImplementation ("io.mockk:mockk:1.11.0")
 	implementation ("io.springfox:springfox-swagger2:2.9.2")
 	implementation ("io.springfox:springfox-swagger-ui:2.9.2")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.7")
 }
 
 tasks.withType<KotlinCompile> {

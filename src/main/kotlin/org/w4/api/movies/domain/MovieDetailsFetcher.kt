@@ -8,7 +8,10 @@ import org.w4.api.movies.dto.MovieDetailsDto
 import java.util.*
 
 @Component
-internal class MovieDetailsFetcher(private val repository: MoviesRepository, private val restTemplate: RestTemplate) {
+internal class MovieDetailsFetcher(
+    private val repository: MoviesRepository,
+    private val restTemplate: RestTemplate
+) {
 
     @Value("\${provider.api.key}")
     lateinit var apiKey: String
@@ -17,11 +20,16 @@ internal class MovieDetailsFetcher(private val repository: MoviesRepository, pri
     lateinit var providerUrl: String
 
     fun getMovieDetails(id: Long): MovieDetailsDto =
-        repository.findById(id).map { movie -> movie.extId }.orElseThrow().let { extId ->
-            getMovieDetailsFromService(providerUrl, apiKey, extId).let { data ->
-                Optional.ofNullable(data).map { x -> x.toDto() }.orElseThrow { RuntimeException() }
+        repository.findById(id)
+            .map { movie -> movie.extId }
+            .orElseThrow().let { extId ->
+                getMovieDetailsFromService(providerUrl, apiKey, extId)
+                    .let { movieDetails ->
+                        Optional.ofNullable(movieDetails)
+                            .map { it.toDto() }
+                            .orElseThrow { RuntimeException() }
+                    }
             }
-        }
 
     private fun getMovieDetailsFromService(providerUrl: String, apiKey: String, extId: String) =
         restTemplate.getForEntity(

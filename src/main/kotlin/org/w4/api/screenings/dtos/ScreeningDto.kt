@@ -2,11 +2,12 @@ package org.w4.api.screenings.dtos
 
 import java.time.LocalDateTime
 
-class ScreeningDto() {
-    var title: String? = null
-    var date: LocalDateTime? = null
-    var price: String? = null
-    var movieId: Long? = null
+class ScreeningDto(
+    val title: String = "N/A",
+    val date: LocalDateTime = LocalDateTime.MIN,
+    val price: String = "0",
+    val movieId: Long = Long.MIN_VALUE
+) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

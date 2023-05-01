@@ -13,7 +13,7 @@ internal data class Movie(
     val name: String,
     val extId: String,
     @ElementCollection
-    val ratings:MutableList<Float>
+    val ratings:List<Float>
 ) {
     fun toDto() = MovieDto(id, name)
 }
