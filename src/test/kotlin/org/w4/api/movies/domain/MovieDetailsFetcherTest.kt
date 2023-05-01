@@ -34,7 +34,7 @@ internal class MovieDetailsFetcherTest {
                 testMovieId,
                 testTitle,
                 testExtId,
-                mutableListOf()
+                listOf()
             )
         )
         every { restTemplate.getForEntity(url, ProviderResponse::class.java) } returns
