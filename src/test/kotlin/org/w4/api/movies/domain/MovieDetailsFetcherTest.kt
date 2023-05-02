@@ -2,8 +2,9 @@ package org.w4.api.movies.domain
 
 import io.mockk.every
 import io.mockk.mockk
-import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
@@ -11,6 +12,7 @@ import org.w4.api.movies.dto.MovieDetailsDto
 import java.math.BigDecimal
 import java.util.*
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 internal class MovieDetailsFetcherTest {
     private val repository: MoviesRepository = mockk()
     private val restTemplate: RestTemplate = mockk()

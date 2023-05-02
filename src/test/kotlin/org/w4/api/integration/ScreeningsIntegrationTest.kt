@@ -1,13 +1,11 @@
 package org.w4.api.integration
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.boot.web.server.LocalServerPort
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.w4.api.screenings.domain.ScreeningRepository
 import org.w4.api.screenings.dtos.NewScreeningDto
 import org.w4.api.screenings.dtos.ScreeningDto
@@ -15,7 +13,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-@RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ScreeningsIntegrationTest {
 

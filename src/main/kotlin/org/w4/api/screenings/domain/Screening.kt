@@ -1,7 +1,7 @@
 package org.w4.api.screenings.domain
 
+import jakarta.persistence.*
 import java.time.LocalDateTime
-import javax.persistence.*
 
 @Entity
 @Table(name = "screenings")

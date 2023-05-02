@@ -1,7 +1,7 @@
 package org.w4.api.movies.domain
 
+import jakarta.persistence.*
 import org.w4.api.movies.dto.MovieDto
-import javax.persistence.*
 
 @Entity
 @Table(name = "movies")
